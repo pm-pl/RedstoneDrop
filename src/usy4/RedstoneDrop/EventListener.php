@@ -20,9 +20,10 @@ namespace usy4\RedstoneDrop;
  * 	
  */
 
-use pocketmine\player\Player;
 use pocketmine\event\entity\EntityDamageEvent;
+use pocketmine\item\VanillaItems;
 use pocketmine\event\Listener;
+use pocketmine\player\Player;
 use usy4\RedstoneDrop\Main;
 
 class EventListener implements Listener
@@ -36,13 +37,12 @@ class EventListener implements Listener
 * @ignoreCancelled true
 * @priority LOW
 */
-   
-
 	public function onDamage(EntityDamageEvent $event)
     
 	{
 		$player = $event->getEntity();
 		if (!$player instanceof Player) return; 
+		if($event->isCancelled()) return;
 		if(mt_rand(0,100) <= trim($this->plugin->getConfig()->get("RsDropRatio"), "%"))
 			$player->getWorld()->dropItem($player->getPosition(), VanillaItems::REDSTONE_DUST(), $player->getMotion());
 	}
