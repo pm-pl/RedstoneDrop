@@ -9,12 +9,13 @@ class Main extends PluginBase{
 
 	public function onEnable() : void{
 		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
-        $this->config();
-        $this->saveDefaultConfig();
-    }
+		$this->config();
+		$this->saveDefaultConfig();
+	}
     
-    public function config(){
-        return $this->getConfig();
-    } // all this
+
+	public function config(){
+		return $this->getConfig();
+	} // all this
 
 }
