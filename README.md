@@ -1,5 +1,5 @@
 # RedstoneDrop
-if player hit another player he will drop redstone.
+if player get damage he will drop redstone.
 # How to use
 Just add the plugin and go to the config and change the ratio
 # config
