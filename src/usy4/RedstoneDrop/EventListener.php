@@ -35,7 +35,7 @@ class EventListener implements Listener
 	
 	/**
 * @ignoreCancelled true
-* @priority LOWER
+* @priority MONITOR
 */
 	public function onDamage(EntityDamageEvent $event)
     
