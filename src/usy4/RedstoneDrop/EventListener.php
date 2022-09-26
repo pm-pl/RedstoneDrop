@@ -46,4 +46,5 @@ class EventListener implements Listener
 		if(mt_rand(0,100) <= trim($this->plugin->getConfig()->get("RsDropRatio"), "%"))
 			$player->getWorld()->dropItem($player->getPosition(), VanillaItems::REDSTONE_DUST(), $player->getMotion());
 	}
+	
 }
