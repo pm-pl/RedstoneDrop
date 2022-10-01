@@ -44,9 +44,7 @@ class EventListener implements Listener
 		if (!$player instanceof Player) return; 
 		if($event->isCancelled()) return;
 		$mrand = mt_rand(0,100);
-		var_dump(trim($this->plugin->getConfig()->get("RsDropRatio"), "%"));
-		var_dump(mt_rand(0,100) <= trim($this->plugin->getConfig()->get("RsDropRatio"), "%"));
-		if(mt_rand(0,100) <= trim($this->plugin->getConfig()->get("RsDropRatio"), "%")){
+		if($mrand <= trim($this->plugin->getConfig()->get("RsDropRatio"), "%")){
 			$player->getWorld()->dropItem($player->getPosition(), VanillaItems::REDSTONE_DUST(), $player->getMotion());
 		}
 	}
