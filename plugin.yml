@@ -1,6 +1,6 @@
 name: RedstoneDrop
 author: usy4
 api: [4.0.0]
-version: 1.0.0
+version: 1.1.0
 main: usy4\RedstoneDrop\Main
 descriptions: If player hit player he will drop redstone
