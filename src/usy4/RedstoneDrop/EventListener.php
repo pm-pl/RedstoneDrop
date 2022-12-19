@@ -20,9 +20,12 @@ namespace usy4\RedstoneDrop;
  * 	
  */
 
-use pocketmine\event\entity\EntityDamageEvent;
-use pocketmine\item\VanillaItems;
+use pocketmine\block\VanillaBlocks;
 use pocketmine\event\Listener;
+use pocketmine\event\entity\EntityDamageEvent;
+use pocketmine\event\entity\EntityItemPickupEvent;
+use pocketmine\item\VanillaItems;
+use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\player\Player;
 use usy4\RedstoneDrop\Main;
 
@@ -45,8 +48,25 @@ class EventListener implements Listener
 		if($event->isCancelled()) return;
 		$mrand = mt_rand(0,100);
 		if($mrand <= trim($this->plugin->getConfig()->get("RsDropRatio"), "%")){
-			$player->getWorld()->dropItem($player->getPosition(), VanillaItems::REDSTONE_DUST(), $player->getMotion());
+			$rs = VanillaItems::REDSTONE_DUST();
+			if ($this->plugin->getConfig()->get("RsCanPickup")) { // Default to false.
+				// Sets an empty CompoundTag namespaced under another CompoundTag.
+				$rs->setNamedTag(CompoundTag::create()->setTag(self::NBT_NAMESPACE, CompoundTag::create()));
+			}
+
+			$player->getWorld()->dropItem($player->getPosition(), $rs, $player->getMotion());
 		}
 	}
+
+	private const NBT_NAMESPACE = "RedstoneDrop";
 	
+	/**
+	 * @priority NORMAL
+	 */
+	public function onEntityItemPickupEvent(EntityItemPickupEvent $event) : void {
+		if ($event->getItem()->getNamedTag()->getTag(self::NBT_NAMESPACE) !== null) {
+			$event->setItem(VanillaBlocks::AIR()->asItem());
+			// Not cancelling the event so the redstone despawn correctly.
+		}
+	}
 }
