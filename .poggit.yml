@@ -5,5 +5,5 @@ branches:
 projects:
   RedstoneDrop:
     path: ""
-    icon: ""
+    icon: "Redstone.png"
 ...
