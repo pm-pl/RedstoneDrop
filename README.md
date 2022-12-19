@@ -5,8 +5,9 @@ Just add the plugin and go to the config and change the ratio
 # config
 ```
 ---
-Redstone drop ratio of 100 (%)
+#Redstone drop ratio of 100 (%)
 RsDropRatio: 30%
+RsCanPickup: false
 ...
 ```
 # My Discord
