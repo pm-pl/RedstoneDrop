@@ -8,6 +8,13 @@ Just add the plugin and go to the config and change the ratio
 #Redstone drop ratio of 100 (%)
 RsDropRatio: 30%
 RsCanPickup: false
+SpecificItems:
+  enabled: false
+  items: ["Diamond Sword", "Diamond Axe"]
+
+SpecificWorlds:
+  enabled: false
+  worlds: ["World"]
 ...
 ```
 # My Discord

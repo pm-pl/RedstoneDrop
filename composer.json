@@ -1,0 +1,8 @@
+{
+    "require": {
+        "pocketmine/pocketmine-mp": "^5.9"
+    },
+    "autoload": {
+        "classmap": ["src"]
+    }
+}
