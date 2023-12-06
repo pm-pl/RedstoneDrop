@@ -4,3 +4,6 @@ api: [5.0.0]
 version: 2.0.0
 main: usy4\RedstoneDrop\Main
 descriptions: If player hit player he will drop redstone
+
+extensions:
+  core: ">=8.1"
